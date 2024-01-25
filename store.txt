@@ -1,7 +1,0 @@
-INSERT INTO question(
-	id, category, difficultylevel, option1, option2, option3, option4, question_title, right_answer)
-	VALUES 
-	(1, 'java', 'easy', '11', '12', '13', '14', 'question 1', '11'),
-	(2, 'python', 'medium', '21', '22', '23', '24', 'question 2', '22'),
-	(3, 'c++', 'easy', '31', '32', '33', '34', 'question 3', '33'),
-	(4, 'java', 'hard', '41', '42', '43', '44', 'question 4', '44');
