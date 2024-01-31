@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.telusko.quizapp.dao.QuestionDao;
 import com.telusko.quizapp.dao.QuizDao;
 import com.telusko.quizapp.model.Quiz;
+import com.telusko.quizapp.model.Response;
 import com.telusko.quizapp.model.Question;
 import com.telusko.quizapp.model.QuestionWrapper;
 
@@ -47,5 +48,22 @@ public class QuizService {
         return new ResponseEntity<>(questionWrappers, HttpStatus.OK);
 
     } 
+
+    public ResponseEntity<String> submitQuiz(Integer id, List<Response> responses){
+            
+        int result = 0;
+        Quiz quiz = quizDao.findById(id).get();
+        List<Question> questions = quiz.getQuestions();
+        int  i = 0;
+        for(Response response : responses){
+            if(response.getResponse().equals(questions.get(i).getRightAnswer())){
+                result ++;
+            }
+            i++;
+        }
+
+        return new ResponseEntity<>(String.valueOf(result), HttpStatus.OK);
+
+    }
 
 }
